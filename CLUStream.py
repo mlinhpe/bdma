@@ -1,12 +1,13 @@
 import math
-import numpy as np
 
-# initPoints = 6
+# initPoints = ? (6)
 # q = 3
 # factor of clu radius
+# t = ?
 t = 5
 # n: number of points in the cluster
 
+# time_of_point = {}
 time_of_point = {(1, 1): 1,
                  (2, 1): 2,
                  (4, 9): 3,
@@ -21,6 +22,7 @@ time_of_point = {(1, 1): 1,
                  (4, 2): 12}
 
 # points that are not initial
+# test_points = []
 test_points = [(2, 3), (11, 3), (12, 12), (12, 11), (11, 12), (4, 2)]
 
 # draw all initial points and then cluster them
