@@ -1,11 +1,5 @@
 import pandas as pd
 
-# matrixA = ()
-# matrixB = ()
-
-matrixA = [(1, 2, 3), (4, 5, 6)]
-matrixB = [(7, 8), (9, 10), (11, 12)]
-
 
 def index_matrix(matrix):
     result_matrix = []
@@ -40,7 +34,7 @@ def map_matrix_b(indexed_matrix):
 def join_matrices(matrix_a, matrix_b):
     df_a = pd.DataFrame(matrix_a)
     df_b = pd.DataFrame(matrix_b)
-    joined_matrix_result = pd.merge(df_a, df_b, on = [0] )
+    joined_matrix_result = pd.merge(df_a, df_b, on=[0])
     return joined_matrix_result
 
 
@@ -54,43 +48,51 @@ def map_joined_matrix(joined_matrix):
 
 def reduce_by_key(mapped_matrix_result):
     df_mapped = pd.DataFrame(mapped_matrix_result)
-    df_reduced = df_mapped.groupby(by = [0]).sum()
+    df_reduced = df_mapped.groupby(by=[0]).sum()
     return df_reduced
 
 
-# index both matrixA and matrixB
-indexed_matrix_a = index_matrix(matrixA)
-print("indexed MatrixA:")
-print(indexed_matrix_a)
+def multiply(matrixA, matrixB):
+    # index both matrixA and matrixB
+    indexed_matrix_a = index_matrix(matrixA)
+    print("indexed MatrixA:")
+    print(indexed_matrix_a)
 
-print("indexed MatrixB:")
-indexed_matrix_b = index_matrix(matrixB)
-print(indexed_matrix_b)
+    print("indexed MatrixB:")
+    indexed_matrix_b = index_matrix(matrixB)
+    print(indexed_matrix_b)
+
+    # map indexed matrixA and matrixB
+    mapped_matrix_a = map_matrix_a(indexed_matrix_a)
+    print("mapped MatrixA:")
+    print(mapped_matrix_a)
+
+    mapped_matrix_b = map_matrix_b(indexed_matrix_b)
+    print("mapped MatrixB:")
+    print(mapped_matrix_b)
+
+    # join mapped matrixA and matrixB
+    joined_matrix_df = join_matrices(mapped_matrix_a, mapped_matrix_b)
+    print("joined MatrixA and MatrixB:")
+    print(joined_matrix_df)
+
+    # map joined matrixA and matrixB
+    mapped_matrix = map_joined_matrix(joined_matrix_df.values.tolist())
+    print("mapped joined matrix:")
+    print(mapped_matrix)
+
+    # reduce by key
+    reduced_result = reduce_by_key(mapped_matrix)
+    print("reduced by key (multiplication result):")
+    print(reduced_result)
+    return reduced_result
+
+# matrixA = ()
+# matrixB = ()
 
 
-# map indexed matrixA and matrixB
-mapped_matrix_a = map_matrix_a(indexed_matrix_a)
-print("mapped MatrixA:")
-print(mapped_matrix_a)
+matrixA = [(1, 2, 3), (4, 5, 6)]
+matrixB = [(7, 8), (9, 10), (11, 12)]
 
-mapped_matrix_b = map_matrix_b(indexed_matrix_b)
-print("mapped MatrixB:")
-print(mapped_matrix_b)
+multiply(matrixA, matrixB)
 
-
-# join mapped matrixA and matrixB
-joined_matrix_df = join_matrices(mapped_matrix_a, mapped_matrix_b)
-print("joined MatrixA and MatrixB:")
-print(joined_matrix_df)
-
-
-# map joined matrixA and matrixB
-mapped_matrix = map_joined_matrix(joined_matrix_df.values.tolist())
-print("mapped joined matrix:")
-print(mapped_matrix)
-
-
-# reduce by key
-reduced_result = reduce_by_key(mapped_matrix)
-print("reduced by key:")
-print(reduced_result)
