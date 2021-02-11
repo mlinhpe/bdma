@@ -1,5 +1,6 @@
 import numpy as np
-#        dim1,dim2
+#   dim1,dim2
+'''
 matrix = np.matrix([
     [1, 0],
     [2, 0],
@@ -7,7 +8,12 @@ matrix = np.matrix([
     [5, 6],
     [6, 6],
     [7, 6]])
-# matrix = np.matrix([])
+matrix = np.matrix([])
+'''
+matrix = np.matrix([
+    [-1, 1],
+    [0, 0],
+    [1, 1]])
 
 n = len(matrix)
 
@@ -59,5 +65,9 @@ print(Z)
 
 # first PCA => largest eigenvalue and eigenvector
 # PCA: 13.21 und vec([0.57, 0.82])
+
+# squared error:
+# dim1: (summe dim1^2 in der rekonstruierten Matrix) / (anzahl-1)
+# dim 1 & 2:  (summe (sqrt(dim1^2 + dim2^2))) / (anzahl-1)
 
 
