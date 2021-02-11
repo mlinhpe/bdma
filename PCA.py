@@ -1,17 +1,21 @@
 import numpy as np
 #        dim1,dim2
-matrix = np.matrix([[1, 0],
-          [2, 0],
-          [3, 0],
-          [5, 6],
-          [6, 6],
-          [7, 6]])
-# matrix = []
+matrix = np.matrix([
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [5, 6],
+    [6, 6],
+    [7, 6]])
+# matrix = np.matrix([])
 
 n = len(matrix)
 
 # center the data by substracting the mean value for each dimension
+# when drawing the PCA the center is the mean_values, e.g. here: (4,3)
 mean_values = np.mean(matrix, axis=0)
+print("mean values")
+print(mean_values)
 centered_matrix = matrix - mean_values
 print("centered matrix:")
 print(centered_matrix)
@@ -52,5 +56,8 @@ print(np.array(Y).transpose())
 Z = mean_values + np.round(np.dot(Y, np.array(U).transpose()), 2)
 print("reconstructed data matrix:")
 print(Z)
+
+# first PCA => largest eigenvalue and eigenvector
+# PCA: 13.21 und vec([0.57, 0.82])
 
 
